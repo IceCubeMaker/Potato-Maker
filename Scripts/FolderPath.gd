@@ -23,7 +23,7 @@ func _ready():
 		if saved_data:
 			# Access saved information
 			var custom_levels_path = saved_data['custom_levels_path']
-			
+			FileBrowser.level_folder = remove_square_brackets(str(saved_data['custom_levels_path']));
 			# Use the loaded information as needed
 			# For example, you can print it
 			print("Loaded custom_levels_path:", custom_levels_path)
@@ -31,3 +31,6 @@ func _ready():
 			print("Error parsing JSON data")
 	else:
 		print("Save file not found")
+		
+func remove_square_brackets(input_string: String) -> String:
+	return input_string.replace("[", "").replace("]", "")
